@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bc52574rvgmsp"
+path="res://.godot/imported/male-death-scream-horror-352706 (1).mp3-20c8c0d69b7552daf8173728215c9262.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/male-death-scream-horror-352706 (1).mp3"
+dest_files=["res://.godot/imported/male-death-scream-horror-352706 (1).mp3-20c8c0d69b7552daf8173728215c9262.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
