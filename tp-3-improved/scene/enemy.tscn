@@ -140,7 +140,7 @@ script = ExtResource("1_f87vc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ysr33")
-animation = &"death"
+animation = &"walk"
 autoplay = "idle"
 offset = Vector2(0, -6)
 

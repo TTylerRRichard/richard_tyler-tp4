@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 var current_enemy = null
+var current_monster = null
 var enemy_inattack_range = false
+var monster_inattack_range = false
 var enemy_attack_cooldown = true
+var monster_attack_cooldown = true
 var health = 100
 var player_alive = true
 
@@ -22,6 +25,7 @@ func _physics_process(delta):
 	player_movement(delta)
 	enemy_attack()
 	update_health()
+	monster_attack()
 	
 	if Input.is_action_just_pressed("home_scene"):
 		get_tree().change_scene_to_file("res://scene/castle.tscn")
@@ -119,17 +123,33 @@ func play_anim(movement):
 
 func player():
 	pass
+	
 
+func monster_attack():
+	if monster_inattack_range and monster_attack_cooldown == true:
+		monster_attack_cooldown = false
+	if current_monster:
+		health -= current_monster.damage
+	$attack_cooldown.start()
+	
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
 		enemy_inattack_range = true
-		current_enemy = body      # store reference to the enemy
+		current_enemy = body    
+
+	if body.has_method("monster"):
+		enemy_inattack_range = true
+		current_enemy = body    
 
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_inattack_range = false
 		current_enemy = null
+	if body.has_method("monster"):
+		enemy_inattack_range = false
+		current_enemy = null
+		
 
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
@@ -141,6 +161,7 @@ func enemy_attack():
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+	monster_attack_cooldown = true
 	
 func attack():
 	var dir = current_dir

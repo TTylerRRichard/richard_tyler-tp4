@@ -10,9 +10,9 @@ var player_exit_leveltwo_posy = 0
 var player_start_posx = 0
 var player_start_posy = 0
 
-var player_damage = 20      # default damage in world
-var level_two_damage = 40   # damage boost for level 2
-var world_damage = 20       # base damage for world
+var player_damage = 20      
+var level_two_damage = 40  
+var world_damage = 20       
 
 func finish_changescenes():
 	if transition_scene == true:
@@ -20,7 +20,7 @@ func finish_changescenes():
 
 		if current_scene == "world":
 			current_scene = "leveltwo"
-			player_damage = level_two_damage   # BOOST DAMAGE
+			player_damage = level_two_damage 
 		else:
 			current_scene = "world"
-			player_damage = world_damage       # NORMAL DAMAGE
+			player_damage = world_damage      

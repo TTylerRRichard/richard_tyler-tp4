@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b6145s6ao3llk"]
+[gd_scene load_steps=24 format=4 uid="uid://b6145s6ao3llk"]
 
 [ext_resource type="Script" uid="uid://5sqdfttphcc0" path="res://scripts/world.gd" id="1_hcb8y"]
 [ext_resource type="PackedScene" uid="uid://cwpf3metbuijl" path="res://scene/player.tscn" id="1_pjass"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dl45qrspuyoso" path="res://scene/coin.tscn" id="8_y3jn2"]
 [ext_resource type="AudioStream" uid="uid://y2na8qndnre4" path="res://assets/audio/medieval-adventure-154671.mp3" id="9_yur6x"]
 [ext_resource type="Texture2D" uid="uid://cqn5hya243d8d" path="res://assets/images/sprites/tilesets/walls/wooden_door.png" id="10_7ghph"]
+[ext_resource type="PackedScene" uid="uid://dnkkhawufeegu" path="res://scene/monster.tscn" id="11_na5tu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hcb8y"]
 texture = ExtResource("2_m5mgf")
@@ -579,6 +580,9 @@ position = Vector2(598, 63)
 rotation = 1.57079
 scale = Vector2(3.76557, 2.46691)
 texture = ExtResource("10_7ghph")
+
+[node name="monster" parent="." instance=ExtResource("11_na5tu")]
+position = Vector2(224, 126)
 
 [connection signal="body_entered" from="leveltwo_transition_point" to="." method="_on_leveltwo_transition_point_body_entered"]
 [connection signal="body_exited" from="leveltwo_transition_point" to="." method="_on_leveltwo_transition_point_body_exited"]
