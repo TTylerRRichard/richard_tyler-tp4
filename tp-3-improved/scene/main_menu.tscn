@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://2jxkmftufvfd"]
+[gd_scene load_steps=13 format=3 uid="uid://2jxkmftufvfd"]
 
 [ext_resource type="Script" uid="uid://1bbvusjcvc7h" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://cpdmtcsqlsexv" path="res://assets/images/sprites/tilesets/grass.png" id="2_2fwvj"]
 [ext_resource type="AudioStream" uid="uid://y2na8qndnre4" path="res://assets/audio/medieval-adventure-154671.mp3" id="3_2fwvj"]
 [ext_resource type="FontFile" uid="uid://bhe81j8e1h2k6" path="res://assets/font/Spritecoder_Regular.ttf" id="4_0iwki"]
+[ext_resource type="Script" uid="uid://cllvtf36gdvxt" path="res://scripts/audio_control.gd" id="5_sepwh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 
@@ -39,6 +40,13 @@ shadow_color = Color(0, 0, 0, 0.203922)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0iwki"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_14wem"]
+color = Color(0, 0.691436, 0, 1)
+thickness = 3
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -62,7 +70,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.502
@@ -78,7 +87,7 @@ grow_vertical = 2
 scale = Vector2(2.00111, 2.00111)
 theme_override_constants/separation = 6
 
-[node name="start" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="MainButtons"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -92,7 +101,21 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
 text = "Start game"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+text = "Options"
+
+[node name="Quit" type="Button" parent="MainButtons"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -111,6 +134,7 @@ text = "Quit
 stream = ExtResource("3_2fwvj")
 volume_db = -10.295
 autoplay = true
+bus = &"Music"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -118,14 +142,66 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -380.0
-offset_top = 150.0
+offset_top = 98.0
 offset_right = 370.0
-offset_bottom = 253.0
+offset_bottom = 201.0
 grow_horizontal = 2
 scale = Vector2(1.03, 1.03)
 theme_override_fonts/font = ExtResource("4_0iwki")
 theme_override_font_sizes/font_size = 76
 text = "Whispering Forest"
 
-[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Options" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 187.0
+offset_right = 847.0
+offset_bottom = 642.0
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_right = 536.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 45
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 284.0
+offset_right = 491.0
+offset_bottom = 373.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+text = "Back
+"
+
+[node name="AudioControl" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 83.0
+offset_right = 448.0
+offset_bottom = 133.0
+theme_override_styles/slider = SubResource("StyleBoxLine_0iwki")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_14wem")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_sepwh")
+audio_bus_name = "Music"
+
+[connection signal="pressed" from="MainButtons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="MainButtons/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="MainButtons/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_Back_pressed"]
+[connection signal="value_changed" from="Options/AudioControl" to="Options/AudioControl" method="_on_value_changed"]

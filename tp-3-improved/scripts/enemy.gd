@@ -3,7 +3,6 @@ extends CharacterBody2D
 var speed = 50
 var player_chase = false
 var player = null
-var damage = 10 
 
 var health = 100
 var player_inattack_zone = false
@@ -50,8 +49,7 @@ func _on_enemy_hitbox_body_exited(body):
 func deal_with_damage():
 	if player_inattack_zone and global.player_current_attack == true:
 		if can_take_damage == true:
-			health -= global.player_damage
-
+			health = health - 20
 			$take_damage_cooldown.start()
 			can_take_damage = false
 		if health <= 0:
