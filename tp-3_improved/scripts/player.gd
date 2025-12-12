@@ -192,6 +192,3 @@ func _on_regin_timer_timeout():
 	if health <= 0: 
 		health = 0
 		
-
-	
-	

@@ -505,6 +505,15 @@ size = Vector2(89, 95)
 [node name="leveltwo" type="Node2D"]
 script = ExtResource("1_4ubpb")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 88.0
+offset_top = 203.0
+offset_right = 298.0
+offset_bottom = 249.0
+text = "Click sur T et B😶‍🌫️"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HUD" parent="." instance=ExtResource("2_jskmy")]
 
 [node name="base" type="TileMapLayer" parent="."]
