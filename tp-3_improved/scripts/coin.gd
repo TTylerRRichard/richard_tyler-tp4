@@ -3,7 +3,7 @@ extends Area2D
 @onready var animation_player = $AnimationPlayer
 
 func _on_body_entered(body):
-	if body.name != "Player":
+	if body.name != "player":
 		return
 
 	global.add_coin(1)
