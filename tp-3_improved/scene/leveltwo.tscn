@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=4 uid="uid://b52htldtsaman"]
+[gd_scene load_steps=26 format=4 uid="uid://b52htldtsaman"]
 
 [ext_resource type="Script" uid="uid://bgo725els54h4" path="res://scripts/leveltwo.gd" id="1_4ubpb"]
 [ext_resource type="Texture2D" uid="uid://cpdmtcsqlsexv" path="res://assets/images/sprites/tilesets/grass.png" id="1_xfvps"]
+[ext_resource type="PackedScene" uid="uid://duy3ix2kmn3ql" path="res://scene/hud.tscn" id="2_jskmy"]
 [ext_resource type="Texture2D" uid="uid://ca4e7ut8pp08q" path="res://assets/images/sprites/tilesets/plains.png" id="2_n1byp"]
 [ext_resource type="Texture2D" uid="uid://caf6e866y6wk" path="res://assets/images/sprites/tilesets/decor_8x8.png" id="3_m7spc"]
 [ext_resource type="Texture2D" uid="uid://1oy0as67a262" path="res://assets/images/sprites/tilesets/decor_16x16.png" id="4_fmawp"]
@@ -503,6 +504,8 @@ size = Vector2(89, 95)
 
 [node name="leveltwo" type="Node2D"]
 script = ExtResource("1_4ubpb")
+
+[node name="HUD" parent="." instance=ExtResource("2_jskmy")]
 
 [node name="base" type="TileMapLayer" parent="."]
 z_index = -2

@@ -17,3 +17,9 @@ func change_scene():
 		if global.current_scene == "world":
 			get_tree().change_scene_to_file("res://scene/leveltwo.tscn")
 			global.finish_changescenes()
+
+
+func _ready():
+
+	global.total_coins = get_tree().get_nodes_in_group("coin").size()
+	global.coins = 0  
