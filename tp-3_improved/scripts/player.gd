@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+var coin_counter = 0
+
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var health = 100
