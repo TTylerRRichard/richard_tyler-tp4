@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b6145s6ao3llk"]
+[gd_scene load_steps=22 format=4 uid="uid://b6145s6ao3llk"]
 
 [ext_resource type="Script" uid="uid://5sqdfttphcc0" path="res://scripts/world.gd" id="1_hcb8y"]
 [ext_resource type="PackedScene" uid="uid://cwpf3metbuijl" path="res://scene/player.tscn" id="1_pjass"]
@@ -511,14 +511,20 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0tg4p")
 sources/1 = SubResource("TileSetAtlasSource_7ghph")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcb8y"]
-size = Vector2(69, 56)
-
 [node name="world" type="Node2D"]
 script = ExtResource("1_hcb8y")
 metadata/_edit_horizontal_guides_ = [-270.0]
 
 [node name="HUD" parent="." instance=ExtResource("2_7ghph")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 49.0
+offset_top = -59.0
+offset_right = 349.0
+offset_bottom = -20.0
+text = "Pick up all coins to move on"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="base" type="TileMapLayer" parent="."]
 z_index = -2
@@ -543,28 +549,16 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAjAAIAAQAAAAAAAAD+/wIAAQAAAAAAAAAEAP//AQAAAAgAAAAEAP3/AQAAAAUAAAAUAP3/AQAAAAUAAAAUAP//AQAAAAgAAAABAAoAAQAAAAgAAAAPAAsAAQAAAAgAAAAPAAkAAQAAAAUAAAABAAgAAQAAAAUAAAAaAAEAAQAAAAUAAAAaAAMAAQAAAAgAAAAGAAEAAQAGAAgAAAAGAAAAAQAGAAcAAAAUAAMAAQAGAAgAAAAfAP//AQAGAAgAAAAUAAIAAQAGAAcAAAAfAP7/AQAGAAcAAAAFAAgAAQAKAAgAAAAFAAcAAQAKAAcAAAAgAAYAAQAKAAcAAAAgAAcAAQAKAAgAAAAIAAoAAQAIAAgAAAAIAAkAAQAIAAYAAAAZAAgAAQAIAAYAAAAZAAkAAQAIAAgAAAALAP//AQAIAAgAAAALAP7/AQAIAAYAAAAWAAEAAQAKAAgAAAAWAAAAAQAKAAcAAAAQAAAAAQAKAAAAAAAOAAAAAQAAAAAAAAASAAAAAQAFAAAAAAAWAAUAAQAAAAEAAAAGAAoAAQAAAAEAAAAPAAIAAQAAAAEAAAAeAAMAAQAAAAEAAAAcAP//AQAAAAEAAAAbAAcAAQAAAAEAAAAJAA8AAQAAAAEAAAAAAA0AAQAAAAEAAAASAA4AAQAAAAEAAAALAPr/AQAAAAEAAAAkAA4AAQAAAAEAAAAdAA4AAQAAAAEAAAAYAA0AAQAAAAEAAAAOAA8AAQAKAAgAAAAaAPv/AQAKAAgAAAABAPr/AQAKAAgAAAAOAA4AAQAKAAcAAAAaAPr/AQAKAAcAAAABAPn/AQAKAAcAAAAbAA0AAQAAAAUAAAAbAA8AAQAAAAgAAAAFAPr/AQAAAAgAAAAIAPr/AQAAAAgAAAAIAPj/AQAAAAUAAAAFAPj/AQAAAAUAAAALAPn/AQAAAAgAAAALAPf/AQAAAAUAAAANAPr/AQAAAAgAAAARAPn/AQAAAAgAAAAUAPv/AQAAAAgAAAAWAPn/AQAAAAgAAAAQAPv/AQAAAAgAAAANAPj/AQAAAAUAAAAQAPn/AQAAAAUAAAARAPf/AQAAAAUAAAAUAPn/AQAAAAUAAAAWAPf/AQAAAAUAAAAeAPr/AQAAAAgAAAAeAPj/AQAAAAUAAAAZAPj/AQAAAAUAAAAZAPr/AQAAAAgAAAASAPr/AQAKAAgAAAASAPn/AQAKAAcAAAD///v/AQAIAAgAAAAhAPn/AQAIAAgAAAAXAPv/AQAIAAgAAAAXAPr/AQAIAAYAAAAhAPj/AQAIAAYAAAD///r/AQAIAAYAAAADAPr/AQAGAAgAAAAdAPv/AQAGAAgAAAAdAPr/AQAGAAcAAAADAPn/AQAGAAcAAAA=")
 tile_set = SubResource("TileSet_na5tu")
 
-[node name="collisions" type="StaticBody2D" parent="."]
-position = Vector2(-48, -112)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
-polygon = PackedVector2Array(0, -2, 640, 1, 640, 148, 709, 147, 709, 205, 638, 204, 641, 367, -3, 368, 0, 29, -1, -8, -20, 12, -50, 337, 15, 429, 670, 429, 807, 186, 665, -47, 6, -40, 3, -6)
-
-[node name="leveltwo_transition_point" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leveltwo_transition_point"]
-position = Vector2(626.5, 64)
-shape = SubResource("RectangleShape2D_hcb8y")
-
-[node name="coin" parent="." groups=["coins"] instance=ExtResource("8_y3jn2")]
+[node name="coin" parent="." instance=ExtResource("8_y3jn2")]
 position = Vector2(59, 86)
 
-[node name="coin2" parent="." groups=["coins"] instance=ExtResource("8_y3jn2")]
+[node name="coin2" parent="." instance=ExtResource("8_y3jn2")]
 position = Vector2(165, 130)
 
-[node name="coin3" parent="." groups=["coins"] instance=ExtResource("8_y3jn2")]
+[node name="coin3" parent="." instance=ExtResource("8_y3jn2")]
 position = Vector2(144, 15)
 
-[node name="coin4" parent="." groups=["coins"] instance=ExtResource("8_y3jn2")]
+[node name="coin4" parent="." instance=ExtResource("8_y3jn2")]
 position = Vector2(330, 78)
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
@@ -575,6 +569,3 @@ autoplay = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(273, 70)
 zoom = Vector2(1.66, 1.66)
-
-[connection signal="body_entered" from="leveltwo_transition_point" to="." method="_on_leveltwo_transition_point_body_entered"]
-[connection signal="body_exited" from="leveltwo_transition_point" to="." method="_on_leveltwo_transition_point_body_exited"]

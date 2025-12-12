@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://duy3ix2kmn3ql"]
+
+[ext_resource type="Script" uid="uid://bng1f4h8ghplw" path="res://hud.gd" id="1_yw0i7"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_yw0i7")
+
+[node name="CoinLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GoalLabel" type="Label" parent="."]
+offset_right = 279.0
+offset_bottom = 40.0
+text = "Collect all coins to go to level 2"
+horizontal_alignment = 1
+vertical_alignment = 1
