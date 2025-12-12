@@ -1,5 +1,6 @@
 extends Node
 
+var coins: int = 0
 var player_current_attack = false
 
 var current_scene = "world"
@@ -19,3 +20,10 @@ func finish_changescenes():
 		else:
 			current_scene = "world"
 			
+
+
+
+func add_coin(amount: int):
+	coins += amount
+	print("Coins: ", coins)
+	get_tree().call_group("hud", "update_coin_label", coins)
